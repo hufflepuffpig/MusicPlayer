@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white" >
+    <RelativeLayout 
+        android:id="@+id/bkg_fragment_head"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#ff33b5e5">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="换背景"
+            android:textColor="@color/white"
+            android:textSize="18sp"/>
+    </RelativeLayout>
+    
+    <GridView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bkg_fragment_head"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:columnWidth="96dp"
+        android:gravity="center"
+        android:horizontalSpacing="2dp"
+        android:verticalSpacing="2dp"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:scrollbars="none"
+        android:listSelector="@android:color/transparent"
+        android:id="@+id/bkg_fragment_gridView">
+        
+    </GridView>
+
+</RelativeLayout>

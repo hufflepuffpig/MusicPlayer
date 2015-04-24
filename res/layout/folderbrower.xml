@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg" >
+    <!-- 顶部标题栏 -->
+   <RelativeLayout 
+       android:id="@+id/top_layout"
+       android:layout_width="match_parent"
+       android:layout_height="50dp"
+       android:background="@color/half_transparent">
+       <ImageButton 
+           android:id="@+id/backBtn"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:background="@drawable/selector_music_btn"
+           android:src="@drawable/icon_back"
+           android:layout_alignParentLeft="true"
+           android:layout_centerVertical="true"
+           android:padding="10dp"/>
+       <TextView 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="歌手"
+           android:textSize="@dimen/title_text_sp"
+           android:textColor="@color/white"
+           android:layout_centerInParent="true"/>
+   </RelativeLayout>
+   
+   <!-- 文件夹显示列表 -->
+   <ListView 
+       android:id="@+id/folder_listview"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_below="@id/top_layout"
+       android:divider="@color/divider_color"
+       android:dividerHeight="0.5dp" />
+       
+    
+
+</RelativeLayout>

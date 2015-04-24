@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+    <!-- 顶部标题,RelativeLayout自动对齐左上 -->
+    <LinearLayout 
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/half_transparent"
+        android:gravity="center">
+        <TextView 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的主页"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_text_sp"/>   
+    </LinearLayout>
+    
+    <!-- 底部操作栏 -->
+    <RelativeLayout 
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="64dip"
+        android:layout_alignParentBottom="true"
+        android:background="@color/bottom_layout_color">
+        <!-- 默认组件添加在相对布局的左上角，headicon是左边的图标 -->
+        <ImageView 
+            android:id="@+id/headicon_iv"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/img_album_background"/>
+        <!-- 注意要覆盖掉Button自带的白色背景,padding用来扩充width的，换rect背景之后可能会无视掉png的空白区域 -->
+        <ImageButton 
+            android:id="@+id/btn_menu2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/icon_menu_point"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_music_btn"
+            android:layout_margin="4dp"
+            android:padding="6dp"/>
+        <View 
+            android:id="@+id/split"
+            android:layout_width="1.5dp"
+            android:layout_height="64dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_toLeftOf="@id/btn_menu2"
+            android:background="#6a5e8a"/>
+        <ImageButton 
+            android:id="@+id/btn_playnNext2"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:src="@drawable/icon_next_normal"
+            android:background="@drawable/selector_music_btn"
+            android:layout_toLeftOf="@id/split"
+            android:layout_centerVertical="true"
+            android:padding="6dp"/>
+        <!-- Play按钮是一个FrameLayout，因为没播放的时候是play，播放中是Pause -->
+        <FrameLayout 
+            android:id="@+id/playlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/btn_playnNext2"
+            android:layout_marginRight="12dp"
+            android:layout_centerVertical="true">
+            <ImageButton 
+                android:id="@+id/btn_pause2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_pause_normal"
+                android:background="@drawable/selector_music_btn"
+                android:padding="6dp"
+                android:visibility="invisible"/>
+            <ImageButton 
+                android:id="@+id/btn_play2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/icon_play_normal"
+                android:background="@drawable/selector_music_btn"
+                android:padding="6dp"/>
+        </FrameLayout>
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/playlayout"
+            android:layout_toRightOf="@id/headicon_iv"
+            android:layout_margin="6dp"
+            android:orientation="vertical">
+            <com.example.views.AlwaysMarqueeView 
+                android:id="@+id/musicname_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+            <com.example.views.AlwaysMarqueeView 
+                android:id="@+id/artist_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+            <com.example.views.AlwaysMarqueeView 
+                android:id="@+id/duration_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:text="00:00"/>
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <!-- 底部操作栏上方的进度条 -->
+    <SeekBar 
+        android:id="@+id/playback_SeekBar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:maxHeight="4dp"
+        android:minHeight="4dp"
+        android:layout_above="@id/bottom_layout"
+        android:thumb="@drawable/playback_seekbar2_thumb"
+        android:progressDrawable="@drawable/playback_seekbar2" />
+       
+    
+    <!-- 定义中间的表格列表 -->
+    <GridView 
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_layout"
+        android:layout_above="@id/playback_SeekBar2"
+        android:numColumns="3"
+        android:horizontalSpacing="6dp"
+        android:verticalSpacing="6dp"
+        android:layout_margin="8dp" />
+    
+    <!-- 第一层ViewPager -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" >
+    </android.support.v4.view.ViewPager>
+    <!-- 第二层ViewPager -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPagerSub"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible">
+    </android.support.v4.view.ViewPager>    
+
+</RelativeLayout>
